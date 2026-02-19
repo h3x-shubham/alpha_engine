@@ -1,0 +1,25 @@
+# Alpha Engine
+
+# Byte-compiled
+__pycache__/
+*.pyc
+*.pyo
+
+# Data
+data_store/
+logs/
+reports/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Environment
+.env
+venv/
+.venv/
+
+# OS
+Thumbs.db
+.DS_Store

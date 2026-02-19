@@ -1,0 +1,83 @@
+# ─────────────────────────────────────────────
+#  Alpha Engine — Base Configuration
+# ─────────────────────────────────────────────
+
+project:
+  name: alpha_engine
+  version: 0.1.0
+
+# ── Universe ──────────────────────────────────
+universe:
+  source: static
+  tickers:
+    - RELIANCE
+    - TCS
+    - HDFCBANK
+    - INFY
+    - ICICIBANK
+    - HINDUNILVR
+    - ITC
+    - SBIN
+    - BHARTIARTL
+    - KOTAKBANK
+    - LT
+    - AXISBANK
+    - BAJFINANCE
+    - ASIANPAINT
+    - MARUTI
+    - TITAN
+    - SUNPHARMA
+    - ULTRACEMCO
+    - WIPRO
+    - HCLTECH
+  exchange: NSE
+  min_avg_volume: 500000
+  min_price: 50.0
+  max_tickers: 50
+
+# ── Date Range ────────────────────────────────
+dates:
+  start: "2018-01-01"
+  end: "2025-12-31"
+  frequency: daily
+
+# ── Labels ────────────────────────────────────
+labels:
+  horizon_days: 5
+  return_type: log
+
+# ── Model ─────────────────────────────────────
+model:
+  type: lightgbm
+  objective: regression
+  hyperparameters:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.05
+    num_leaves: 31
+    min_child_samples: 20
+    subsample: 0.8
+    colsample_bytree: 0.8
+    reg_alpha: 0.1
+    reg_lambda: 1.0
+    random_state: 42
+
+# ── Walk-Forward ──────────────────────────────
+walk_forward:
+  train_window_days: 504
+  test_window_days: 21
+  embargo_days: 5
+  expanding: false
+
+# ── Backtest ──────────────────────────────────
+backtest:
+  initial_capital: 1000000.0
+  top_n: 10
+  rebalance_frequency_days: 5
+  long_only: true
+
+# ── Paths ─────────────────────────────────────
+paths:
+  data_store: data_store/
+  logs: logs/
+  models: data_store/models/
