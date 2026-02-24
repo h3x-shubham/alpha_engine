@@ -1,1 +1,1 @@
-from labels.target import TargetBuilder
+"""Init file for the labels module."""
